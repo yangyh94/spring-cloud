@@ -1,0 +1,32 @@
+info:
+  app:
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "@project.version@"
+
+server:
+  port: 8282
+
+spring:
+  application:
+    name: configServer
+  #开启消息总线
+  cloud:
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+#    config:
+#      server:
+#        git:
+#          uri:
+#          username:
+#          password:
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+  instance:
+    #ip-address: 127.0.0.1
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
