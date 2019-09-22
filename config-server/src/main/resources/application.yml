@@ -9,7 +9,7 @@ server:
 
 spring:
   application:
-    name: configServer
+    name: config-server
   #开启消息总线
   cloud:
     bus:

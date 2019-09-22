@@ -1,0 +1,50 @@
+#server:
+  #port: 9000
+
+spring:
+  application:
+    name: zuul-server
+  cloud:
+    config:
+      discovery:
+        service-id: CONFIG-SERVER
+        enabled: true
+      profile: dev
+      #label: dev
+  rabbitmq:
+    host: 192.168.124.133
+    port: 5672
+    username: guest
+    password: guest
+
+info:
+  app:
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "@project.version@"
+
+#eureka 注册中心地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+  instance:
+    #ip-address: 127.0.0.1 以IP的形式注入实例
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+
+#配置zuul路由
+#zuul:
+  #routes:
+    #configserver: /geteway/config/**
+
+  #关闭下面入口
+  #ignored-patterns: /*-server/**
+  #处理http请求头为空的问题 默认会过滤掉
+  #sensitive-headers:
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+

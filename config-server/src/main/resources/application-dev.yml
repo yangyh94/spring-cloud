@@ -4,13 +4,16 @@ spring:
       #配置git远程仓库
       server:
         git:
-          uri: https://gitlab.com/satan_smile/spring-cloud-config.git
-          search-paths: resources
-          username:
+          uri: https://gitee.com/yanghuanyu94/spring-cloud-config.git
+          #search-paths: resources
+          username: yangyh94@163.com
           password:
-      label: dev
-      allow-override: true
-      profile: dev
+          timeout: 5
+      #分支
+      #label: dev
+      #allow-override: true
+      #环境
+      #profile: dev
   #拉取配置文件：host:port/config_name/profiles/label  (如：localhost:8282/gateway/dev/dev)
   rabbitmq:
     host: 192.168.124.133
